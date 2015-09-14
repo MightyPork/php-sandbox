@@ -1,4 +1,4 @@
 web: .PHONY
-	php -S localhost:8088 -t . index.php
+	php -S localhost:1337
 
 .PHONY:
