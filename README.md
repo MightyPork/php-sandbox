@@ -1,7 +1,7 @@
 PHP Sandbox
 ===========
 
-*~ Improved & slimmed down fork of PHP Console ~*
+*~ Improved & slimmed down fork of [PHP Console](https://github.com/Seldaek/php-console) ~*
 
 A web editor to try your PHP code.
 
@@ -22,7 +22,7 @@ This is a fork of the original code by Jordi Boggiano.
 **Changes:**
 
 - Changed colors to look more like Sublime Text, with Monokai theme
-- Slitly improved layout
+- Slightly improved layout
 - Removed info text at the bottom of the screen
 - Output is now plain text, not HTML (more useful for debugging)
 - Removed "krumo" (some kind of PHP library)
@@ -75,7 +75,7 @@ Modified by:
 **Ondřej Hruška** [&lt;ondra@ondrovo.com&gt;](mailto:ondra@ondrovo.com)<br>
 Web: [www.ondrovo.com](http://www.ondrovo.com)<br>
 Twitter: [@MightyPork](http://twitter.com/MightyPork)<br>
-GitHub: [MightyPork/php-console](https://github.com/MightyPork/php-console)
+GitHub: [MightyPork/php-sandbox](https://github.com/MightyPork/php-sandbox)
 
 
 License
