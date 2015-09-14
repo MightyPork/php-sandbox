@@ -1,8 +1,6 @@
 PHP Console
 ===========
 
-**This is a slimmed-down fork modified to look like Sublime Text.**
-
 A web console to try your PHP code.
 
 Creating a test file or using php's interactive mode can be a bit cumbersome
@@ -11,6 +9,22 @@ right from your browser.
 
 It is secure since it's accessible only from localhost, and very easy to
 setup and use.
+
+About this fork
+---------------
+
+This is a fork of the original code by Jordi Boggiano.
+
+Changes:
+
+- Changed colors to look more like Sublime Text, with Monokai theme
+- Slitly improved layout
+- Removed info text at the bottom of the screen
+- Output is now plain text, not HTML (more useful for debugging)
+- Removed "krumo" (some kind of PHP library)
+- Removed "clippy" (flash applet for clipboard support)
+- Updated ACE to 1.2.0 with a patch to support the trait keyword
+- Hidden loader animation (was broken)
 
 Screenshot
 ----------
@@ -44,16 +58,16 @@ Code contributions or ideas are obviously much welcome. Send pull requests or is
 Authors
 -------
 
-Project originally by:
+Originally by:
 
-Jordi Boggiano - [j.boggiano@seld.be](mailto:j.boggiano@seld.be)
-[seld.be](http://seld.be/) - [@seldaek](http://twitter.com/seldaek)
+**Jordi Boggiano** - [j.boggiano@seld.be](mailto:j.boggiano@seld.be)<br>
+[seld.be](http://seld.be/) - [@seldaek](http://twitter.com/seldaek)<br>
 [github.com/Seldaek/php-console](https://github.com/Seldaek/php-console)
 
 Modified by:
 
-Ondřej Hruška - [ondra@ondrovo.com](mailto:ondra@ondrovo.com)
-[www.ondrovo.com](http://www.ondrovo.com) - [@MightyPork](http://twitter.com/MightyPork)
+**Ondřej Hruška** - [ondra@ondrovo.com](mailto:ondra@ondrovo.com)<br>
+[www.ondrovo.com](http://www.ondrovo.com) - [@MightyPork](http://twitter.com/MightyPork)<br>
 [github.com/MightyPork/php-console](https://github.com/MightyPork/php-console)
 
 
