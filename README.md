@@ -1,7 +1,7 @@
 PHP Sandbox
 ===========
 
-*~ Improved & slimmed down fork of PHP Console ~*
+*~ Improved & slimmed down fork of [PHP Console](https://github.com/Seldaek/php-console) ~*
 
 A web editor to try your PHP code.
 
