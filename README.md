@@ -1,6 +1,8 @@
 PHP Sandbox
 ===========
 
+*~ Improved & slimmed down fork of PHP Console ~*
+
 A web editor to try your PHP code.
 
 Creating a test file or using php's interactive mode can be a bit cumbersome
@@ -23,6 +25,7 @@ This is a fork of the original code by Jordi Boggiano.
 - Output is now plain text, not HTML (more useful for debugging)
 - Removed "krumo" (some kind of PHP library)
 - Removed "clippy" (flash applet for clipboard support)
+- Removed the "Melody" plugin and composer files
 - Updated ACE to 1.2.0 with a patch to support the trait keyword
 - Hidden loader animation (was broken)
 
@@ -34,15 +37,15 @@ Screenshot
 Installation
 ------------
 
-Clone the git repo and run `composer install`, and place somewhere it in your webroot.
+Clone the git repo and place it somewhere in your webroot.
 
-You can also use the internal PHP server - just run:
-    
+You can also use the internal PHP server - run:
+
     $ php -S localhost:1337
-    
+
 And go to `http://localhost:1337`
 
-Alternatively, use the `Makefile` - run `make` and the server will start.
+You can also use the `Makefile` - run `make` and the server will start.
 
 Configuration
 -------------
