@@ -102,6 +102,7 @@ if (isset($_POST['code'])) {
         <script src="ace/ace.js"></script>
         <script src="ace/theme-monokai.js"></script>
         <script src="ace/mode-php.js"></script>
+        <script src="ace/ext-language_tools.js"></script>
         <script src="php-console.js"></script>
 
         <script>

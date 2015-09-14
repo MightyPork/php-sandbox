@@ -3,21 +3,22 @@
 /**
  * PHP Console
  *
- * A web-based php debug console
+ * A web-based php sandbox
  *
- * Copyright (C) 2010, Jordi Boggiano
- * http://seld.be/ - j.boggiano@seld.be
+ * Copyright (C)
+ * 2010, Jordi Boggiano <j.boggiano@seld.be>
+ * 2015, Ondřej Hruška <ondra@ondrovo.com>
  *
  * Licensed under the new BSD License
  * See the LICENSE file for details
  *
- * Source on Github http://github.com/Seldaek/php-console
+ * Source on Github http://github.com/MightyPork/php-sandbox
  */
 (function (require, $, ace) {
     "use strict";
 
-    var updateStatusBar, prepareClippyButton, refreshKrumoState, handleSubmit, initializeAce, handleAjaxError,
-        options, editor;
+    var updateStatusBar, handleSubmit, initializeAce, handleAjaxError, options, editor;
+
     options = {
         tabsize: 4,
         editor: 'editor'
@@ -32,36 +33,6 @@
     };
 
     /**
-     * prepares a clippy button for clipboard access
-     */
-    prepareClippyButton = function (e) {
-        var selection = editor.getSession().doc.getTextRange(editor.getSelectionRange());
-        if (!selection) {
-            $('.statusbar .copy').hide();
-            return;
-        }
-        $('#clippy embed').attr('FlashVars', 'text=' + selection);
-        $('#clippy param[name="FlashVars"]').attr('value', 'text=' + selection);
-        $('.statusbar .copy').html($('.statusbar .copy').html()).show();
-    };
-
-    /**
-     * adds a toggle button to expand/collapse all krumo sub-trees at once
-     */
-    refreshKrumoState = function () {
-        if ($('.krumo-expand').length > 0) {
-            $('<a class="expand" href="#">Toggle all</a>')
-                .click(function (e) {
-                    $('div.krumo-element.krumo-expand').each(function (idx, el) {
-                        window.krumo.toggle(el);
-                    });
-                    e.preventDefault();
-                })
-                .prependTo('.output');
-        }
-    };
-
-    /**
      * does an async request to eval the php code and displays the result
      */
     handleSubmit = function (e) {
@@ -72,36 +43,6 @@
         if (window.localStorage) {
             localStorage.setItem('phpCode', editor.getSession().getValue());
         }
-
-        var controlChars = {
-            'NUL' : /\x00/g, // Null char
-            'SOH' : /\x01/g, // Start of Heading
-            'STX' : /\x02/g, // Start of Text
-            'ETX' : /\x03/g, // End of Text
-            'EOT' : /\x04/g, // End of Transmission
-            'ENQ' : /\x05/g, // Enquiry
-            'ACK' : /\x06/g, // Acknowledgment
-            'BEL' : /\x07/g, // Bell
-            'BS'  : /\x08/g, // Back Space
-            'SO'  : /\x0E/g, // Shift Out / X-On
-            'SI'  : /\x0F/g, // Shift In / X-Off
-            'DLE' : /\x10/g, // Data Line Escape
-            'DC1' : /\x11/g, // Device Control 1 (oft. XON)
-            'DC2' : /\x12/g, // Device Control 2
-            'DC3' : /\x13/g, // Device Control 3 (oft. XOFF)
-            'DC4' : /\x14/g, // Device Control 4
-            'NAK' : /\x15/g, // Negative Acknowledgement
-            'SYN' : /\x16/g, // Synchronous Idle
-            'ETB' : /\x17/g, // End of Transmit Block
-            'CAN' : /\x18/g, // Cancel
-            'EM'  : /\x19/g, // End of Medium
-            'SUB' : /\x1A/g, // Substitute
-            'ESC' : /\x1B/g, // Escape
-            'FS'  : /\x1C/g, // File Separator
-            'GS'  : /\x1D/g, // Group Separator
-            'RS'  : /\x1E/g, // Record Separator
-            'US'  : /\x1F/g  // Unit Separator
-        };
 
         // eval server-side
         $.post('?js=1', { code: editor.getSession().getValue() }, function (res, status, jqXHR) {
@@ -116,21 +57,15 @@
 
             if (res.match(/#end-php-console-output#$/)) {
                 var result = res.substring(0, res.length - 24);
-                // $.each(controlChars, function (identifier, regex) {
-                //     result = result.replace(regex, '<span class="control-char">' + identifier + '</span>');
-                // });
                 $('div.output').text(result); // or html?
             } else {
                 $('div.output').text(res + "\n\n*** Script ended unexpectedly. ***");
-               // $('div.output').text(res + "<br /><br /><em>Script ended unexpectedly.</em>");
             }
-            refreshKrumoState();
         });
     };
 
     handleAjaxError = function (event, jqxhr, settings, exception) {
         $('div.output').html("<em>Error occured while posting your code.</em>");
-        refreshKrumoState();
     };
 
     initializeAce = function () {
@@ -154,9 +89,12 @@
         editor.focus();
         editor.gotoLine(3, 0);
         editor.setTheme("ace/theme/monokai");
-        editor.setOption('showPrintMargin', false);
-        editor.setOption('fontSize', '18px');
-        editor.setOption('fontFamily', 'Source Code Pro');
+        editor.setOptions({
+            showPrintMargin: false,
+            fontSize: '18px',
+            enableBasicAutocompletion: true,
+            fontFamily: 'Source Code Pro'
+        });
 
         // set mode
         PhpMode = require("ace/mode/php").Mode;
@@ -172,9 +110,6 @@
 
         // events
         editor.getSession().selection.on('changeCursor', updateStatusBar);
-        if (window.navigator.userAgent.indexOf('Opera/') === 0) {
-            editor.getSession().selection.on('changeSelection', prepareClippyButton);
-        }
 
         // reset button
         if (window.localStorage) {
