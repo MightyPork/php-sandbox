@@ -12,6 +12,8 @@ right from your browser.
 It is secure since it's accessible only from localhost, and very easy to
 setup and use.
 
+**Tip:** Press Ctrl+Enter to evaluate the code
+
 About this fork
 ---------------
 
