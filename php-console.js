@@ -66,7 +66,7 @@
      */
     handleSubmit = function (e) {
         e.preventDefault();
-        $('div.output').html('<img src="loader.gif" class="loader" alt="" /> Loading ...');
+        //$('div.output').html('<img src="loader.gif" class="loader" alt="" /> Loading ...'); /* loader sucks */
 
         // store session
         if (window.localStorage) {
@@ -105,23 +105,24 @@
 
         // eval server-side
         $.post('?js=1', { code: editor.getSession().getValue() }, function (res, status, jqXHR) {
-            var mem = jqXHR.getResponseHeader("X-Memory-Usage") || "", 
+            var mem = jqXHR.getResponseHeader("X-Memory-Usage") || "",
                 rendertime = jqXHR.getResponseHeader("X-Rendertime") || "";
-            
+
             if (mem || rendertime) {
                 $('.statusbar .runtime-info').text('Memory usage: '+ mem + ' MB, Rendertime: ' + rendertime + 'ms');
             } else {
                 $('.statusbar .runtime-info').text('');
             }
-            
-            if (res.match(/#end-php-console-output#$/)) {                
+
+            if (res.match(/#end-php-console-output#$/)) {
                 var result = res.substring(0, res.length - 24);
-                $.each(controlChars, function (identifier, regex) {
-                    result = result.replace(regex, '<span class="control-char">' + identifier + '</span>');
-                });
-                $('div.output').html(result);
+                // $.each(controlChars, function (identifier, regex) {
+                //     result = result.replace(regex, '<span class="control-char">' + identifier + '</span>');
+                // });
+                $('div.output').text(result); // or html?
             } else {
-                $('div.output').html(res + "<br /><br /><em>Script ended unexpectedly.</em>");
+                $('div.output').text(res + "\n\n*** Script ended unexpectedly. ***");
+               // $('div.output').text(res + "<br /><br /><em>Script ended unexpectedly.</em>");
             }
             refreshKrumoState();
         });
@@ -152,6 +153,10 @@
 
         editor.focus();
         editor.gotoLine(3, 0);
+        editor.setTheme("ace/theme/monokai");
+        editor.setOption('showPrintMargin', false);
+        editor.setOption('fontSize', '18px');
+        editor.setOption('fontFamily', 'Source Code Pro');
 
         // set mode
         PhpMode = require("ace/mode/php").Mode;

@@ -1,18 +1,36 @@
 body, textarea, input {
-    font: 12px monospace;
+    font-size: 12px;
+    font-family: monospace "Source Code Pro";
 }
 
 body {
-    background: #eee;
+    background: #191A16;
+    color: #F0F0F0;
+
     margin: 0;
     padding: 0;
     width: 100%;
+    height:100%;
     position: absolute;
     top: 0;
     bottom: 0;
     display: flex;
     flex-direction: column;
 
+    overflow:hidden;
+}
+
+/* ace-editor requires to define styles by id (specificity) */
+.editor#editor {
+    /** /
+    width: 80%;
+    left: 20%;
+    /**/
+    width: 100%;
+    /**/
+
+    position: relative;
+    flex: 1 1 auto;
 }
 
 .console-wrapper {
@@ -22,13 +40,6 @@ body {
 
 .footer-wrapper {
     flex: 0 1 auto;
-}
-
-input {
-    width: 80%;
-    margin: 10px auto;
-    display: block;
-    font-size: 2em;
 }
 
 a {
@@ -41,7 +52,6 @@ a {
 }
 
 .output, .input {
-    background: #fff;
 }
 
 .output-wrapper, .input-wrapper {
@@ -57,10 +67,18 @@ a {
     right: 0;
     overflow: auto;
     padding: 0 5px;
+
+    font-size: 18px;
+
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
 .input-wrapper {
-    border-right: 4px solid #EEE;
+    border-right: 4px solid #686860;
 }
 
 .input-wrapper form {
@@ -80,42 +98,34 @@ a {
 
 .statusbar {
     padding: 3px 5px;
-    background: #E8E8E8;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    border-bottom-left-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
-    border-bottom-right-radius: 5px;
+    background: #686860;
+    text-shadow: 0 -1px 1px black;
+    height: 20px;
+    line-height: 20px;
+    position:relative;
+    color:white;
 }
 
-.statusbar .copy {
-    margin-left: 50px;
-    display: none;
-}
-#clippy {
-    position: relative;
-    top: 2px;
-    left: 0;
+.statusbar .runtime-info {
+    text-align: right;
+    float: right;
+    clear: right;
+    /*width: 350px;*/
+    padding-right: 90px;
 }
 
-/* ace-editor requires to define styles by id (specificity) */
-.editor#editor {
-    width: 100%;
-    position: relative;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-right-radius: 5px;
-    flex: 1 1 auto;
+input[type=submit] {
+    position: absolute;
+    right: 0;
+    height: 26px;
+    margin: 0;
+    top:0;
+    width: 80px;
 }
-#editor .ace_gutter {
-    -webkit-border-top-left-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    border-top-left-radius: 5px;
-}
+
 
 .output img.loader {
-    margin-bottom: -4px;
+    display:none;/*it's ugly*/
 }
 
 .help {
@@ -142,11 +152,4 @@ a {
     -webkit-border-radius: 3px;
     border-radius: 3px;
     padding: 1px 2px;
-}
-
-.statusbar .runtime-info {
-    text-align: right;
-    float: right;
-    clear: right;
-    width: 350px;
 }
