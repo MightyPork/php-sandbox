@@ -1,34 +1,48 @@
-PHP Console
+PHP Sandbox
 ===========
 
-A web console to try your PHP code into
+A web editor to try your PHP code.
 
 Creating a test file or using php's interactive mode can be a bit cumbersome
 to try random php snippets. This allows you to run small bits of code easily
 right from your browser.
 
-It is secure since accessible only from the local host, and very easy to
+It is secure since it's accessible only from localhost, and very easy to
 setup and use.
+
+About this fork
+---------------
+
+This is a fork of the original code by Jordi Boggiano.
+
+**Changes:**
+
+- Changed colors to look more like Sublime Text, with Monokai theme
+- Slitly improved layout
+- Removed info text at the bottom of the screen
+- Output is now plain text, not HTML (more useful for debugging)
+- Removed "krumo" (some kind of PHP library)
+- Removed "clippy" (flash applet for clipboard support)
+- Updated ACE to 1.2.0 with a patch to support the trait keyword
+- Hidden loader animation (was broken)
 
 Screenshot
 ----------
 
-<img src="http://seld.be/_misc/php-console.png" alt="PHP Console screenshot" border="0" />
+![screenshot](https://dl.dropboxusercontent.com/u/64454818/PERMANENT/php-sandbox.png)
 
 Installation
 ------------
 
-Clone the git repo or download it as a zip/tarball, drop it somewhere in your
-local web document root and access it with http://localhost/path/to/php-console
+Clone the git repo and run `composer install`, and place somewhere it in your webroot.
 
-You can also install it with Composer using this command:
+You can also use the internal PHP server - just run:
+    
+    $ php -S localhost:1337
+    
+And go to `http://localhost:1337`
 
-    composer create-project --stability=dev --keep-vcs seld/php-console
-
-To update it just run `git pull` in the directory to pull the latest changes in.
-
-You can use the internal PHP server too.  
-run `php -S localhost:1337` in a terminal and go to `http://localhost:1337/`.
+Alternatively, use the `Makefile` - run `make` and the server will start.
 
 Configuration
 -------------
@@ -41,54 +55,23 @@ Contributing
 
 Code contributions or ideas are obviously much welcome. Send pull requests or issues on github.
 
-Author
-------
+Authors
+-------
 
-Jordi Boggiano - <j.boggiano@seld.be><br />
-<http://seld.be/> - <http://twitter.com/seldaek>
+Originally by:
 
-Changelog
----------
+**Jordi Boggiano** - [&lt;j.boggiano@seld.be&gt;](mailto:j.boggiano@seld.be)<br>
+Web: [seld.be](http://seld.be/)<br>
+Twitter: [@seldaek](http://twitter.com/seldaek)<br>
+GitHub: [Seldaek/php-console](https://github.com/Seldaek/php-console)
 
-- 1.5.0-dev
-  - Added melody-script integration. requires a composer binary within the systems/webservers PATH env variable.
-  - Updated bundled ACE editor to 1.1.8
-  - Layout is now flex-css based
-  - Added a new `bootstrap` option to be include before source evaluation
-  - Moved tabsize, ip-whitelist into an option
-  - Added servers-side runtime information, to be rendered in the consoles statusbar
-  - Allow configuring options
-- 1.4.0
-  - Added control-char escaping to make them more visible
-- 1.3.0
-  - Added code persistence across sessions in localStorage + a reset button
-- 1.2.3
-  - Fixed syntax highlighting
-  - Fixed some styling issues
-  - Fixed ajax error handling for non responding backends
-- 1.2.2
-  - Updated ACE to latest version
-  - Added composer.json support
-- 1.2.1
-  - Performance fixes for ACE editor integration
-  - JS is no longer a requirement
-- 1.2.0
-  - Replaced built-in editor with [ACE editor](http://ace.ajax.org/) which provides highlighting and
-    [other features](https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts)
-  - Handle old setups with magic_quotes enabled
-- 1.1.2
-  - Fixed issue with IPv6 loopback not being whitelisted
-- 1.1.1
-  - Cross-browser compatibility enhancements
-- 1.1.0
-  - Script execution is now done via an async js request, preventing die() and exception to mess up the entire console
-  - Added a status bar with char/line display
-  - Added a toggle button to expand/collapse all krumo sub-trees at once
-  - Cross-browser compatibility enhancements
-  - Removing a tab (i.e. 4 spaces) on backspace now
-  - Made tab character(s) configurable (see index.php)
-- 1.0.0
-  - Initial Public Release
+Modified by:
+
+**Ondřej Hruška** [&lt;ondra@ondrovo.com&gt;](mailto:ondra@ondrovo.com)<br>
+Web: [www.ondrovo.com](http://www.ondrovo.com)<br>
+Twitter: [@MightyPork](http://twitter.com/MightyPork)<br>
+GitHub: [MightyPork/php-console](https://github.com/MightyPork/php-console)
+
 
 License
 -------
@@ -102,7 +85,5 @@ Acknowledgements
 
 PHP Console bundles the following libraries, and the work of their respective authors is very much appreciated:
 
-- [krumo](http://krumo.sourceforge.net/) licensed under the LGPL
 - [jQuery](http://jquery.com) licensed under the MIT License
 - [ACE](http://ace.ajax.org/) licensed under the MPL/LGPL/GPL Licenses
-- [Clippy](https://github.com/mojombo/clippy) licensed under the MIT License
