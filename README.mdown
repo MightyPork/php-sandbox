@@ -1,7 +1,7 @@
-PHP Console
+PHP Sandbox
 ===========
 
-A web console to try your PHP code.
+A web editor to try your PHP code.
 
 Creating a test file or using php's interactive mode can be a bit cumbersome
 to try random php snippets. This allows you to run small bits of code easily
@@ -15,7 +15,7 @@ About this fork
 
 This is a fork of the original code by Jordi Boggiano.
 
-Changes:
+**Changes:**
 
 - Changed colors to look more like Sublime Text, with Monokai theme
 - Slitly improved layout
@@ -60,15 +60,17 @@ Authors
 
 Originally by:
 
-**Jordi Boggiano** - [j.boggiano@seld.be](mailto:j.boggiano@seld.be)<br>
-[seld.be](http://seld.be/) - [@seldaek](http://twitter.com/seldaek)<br>
-[github.com/Seldaek/php-console](https://github.com/Seldaek/php-console)
+**Jordi Boggiano** - [&lt;j.boggiano@seld.be&gt;](mailto:j.boggiano@seld.be)<br>
+Web: [seld.be](http://seld.be/)<br>
+Twitter: [@seldaek](http://twitter.com/seldaek)<br>
+GitHub: [Seldaek/php-console](https://github.com/Seldaek/php-console)
 
 Modified by:
 
-**Ondřej Hruška** - [ondra@ondrovo.com](mailto:ondra@ondrovo.com)<br>
-[www.ondrovo.com](http://www.ondrovo.com) - [@MightyPork](http://twitter.com/MightyPork)<br>
-[github.com/MightyPork/php-console](https://github.com/MightyPork/php-console)
+**Ondřej Hruška** [&lt;ondra@ondrovo.com&gt;](mailto:ondra@ondrovo.com)<br>
+Web: [www.ondrovo.com](http://www.ondrovo.com)<br>
+Twitter: [@MightyPork](http://twitter.com/MightyPork)<br>
+GitHub: [MightyPork/php-console](https://github.com/MightyPork/php-console)
 
 
 License
